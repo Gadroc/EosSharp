@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="EosBus.cs" />
     <Compile Include="EosBusCommands.cs" />
+    <Compile Include="EosBusInterfaceSerial.cs" />
+    <Compile Include="EosBusMaster.cs" />
+    <Compile Include="EosBusSerialBase.cs" />
     <Compile Include="EosBusStatistics.cs" />
     <Compile Include="EosCommandProcessor.cs" />
     <Compile Include="EosDevice.cs" />
