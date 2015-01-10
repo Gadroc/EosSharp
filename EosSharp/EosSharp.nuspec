@@ -10,8 +10,8 @@
     <projectUrl>https://github.com/Gadroc/EosSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Release.</releaseNotes>
-    <copyright>Copyright 2014</copyright>
+    <releaseNotes>Add support for coil needle commands.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
     <tags>EOS</tags>
   </metadata>
 </package>

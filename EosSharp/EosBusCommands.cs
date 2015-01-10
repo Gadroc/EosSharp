@@ -45,6 +45,7 @@ namespace GadrocsWorkshop.Eos
         STEPPER_SET_CONFIG = 18,
         STEPPER_GET_CONFIG = 147,
         STEPPER_GET_CONFIG_RESPONSE = 83,
+        COIL_SET_POSITION = 20,
         POLL = 191,
         POLL_RESPONSE = 127
     }

@@ -36,6 +36,7 @@ namespace GadrocsWorkshop.Eos
         private byte _steppers;
         private byte _servos;
         private byte _alphaNumericDisplays;
+        private byte _coilOutputs;
 
         private EosPacket _powerPacket;
         private EosPacket _levelPacket;
@@ -89,6 +90,11 @@ namespace GadrocsWorkshop.Eos
             _servos = data[17];
             _alphaNumericDisplays = data[18];
             _groupAddress = data[19];
+            if (data.Count >= 21) 
+            {
+                _coilOutputs = data[20];
+            }
+            
 
             _powerPacket = new EosPacket(Address, EosBusCommands.BACKLIGHT_POWER);
             _powerPacket.Add((byte)0);
@@ -187,6 +193,14 @@ namespace GadrocsWorkshop.Eos
         public byte ServoMotors
         {
             get { return _servos; }
+        }
+
+        /// <summary>
+        /// Gets the number of coil outputs on this device.
+        /// </summary>
+        public byte CoilOutputs
+        {
+            get { return _coilOutputs; }
         }
 
         /// <summary>
@@ -464,6 +478,21 @@ namespace GadrocsWorkshop.Eos
             _bus.SendPacket(packet);
         }
 
+
+        /// <summary>
+        /// Sets the position of a coil needle.
+        /// </summary>
+        /// <param name="coil">ID of the coil to set the position for.</param>
+        /// <param name="position">Position of the coil clamped from -255 to 255.</param>
+        public void SetCoilPosition(byte coil, int position)
+        {
+            EosPacket packet = new EosPacket();
+            packet.Destination = _address;
+            packet.Command = (byte)EosBusCommands.COIL_SET_POSITION;
+            packet.Add(coil);
+            packet.Add(position);
+            _bus.SendPacket(packet);
+        }
         #endregion
 
         #region Device State

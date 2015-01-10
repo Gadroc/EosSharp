@@ -105,6 +105,10 @@ namespace GadrocsWorkshop.Eos
                 case "text":
                     ProcessTextCommand(device, arguments);
                     break;
+
+                case "coil":
+                    ProcessCoilCommand(device, arguments);
+                    break;
             }
         }
 
@@ -172,6 +176,19 @@ namespace GadrocsWorkshop.Eos
                     {
                         device.SetLedPower((byte)ledId, false);
                     }
+                    break;
+            }
+        }
+
+        public void ProcessCoilCommand(EosDevice device, Queue<String> arguments)
+        {
+            byte coil = byte.Parse(arguments.Dequeue());
+            string coilCommand = arguments.Dequeue().ToLower();
+            switch (coilCommand)
+            {
+                case "position":
+                    int position = int.Parse(arguments.Dequeue());
+                    device.SetCoilPosition(coil, position);
                     break;
             }
         }
